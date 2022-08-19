@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.stage.Stage?>
+<Stage height="700.0" resizable="false" title="ExcelMapToPDF Editor" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <scene>
+      <Scene>
+          <AnchorPane prefHeight="700.0" prefWidth="700.0">
+            <children>
+               <MenuBar prefHeight="40.0" prefWidth="700.0">
+                 <menus>
+                   <Menu mnemonicParsing="false" text="File">
+                     <items>
+                       <MenuItem mnemonicParsing="false" text="Close" />
+                     </items>
+                   </Menu>
+                   <Menu mnemonicParsing="false" text="Edit">
+                     <items>
+                       <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                   </Menu>
+                   <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                       <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About" />
+                           <MenuItem fx:id="consoleMenuItem" mnemonicParsing="false" text="Show Console" />
+                     </items>
+                   </Menu>
+                 </menus>
+               </MenuBar>
+               <TabPane layoutY="40.0" prefHeight="700.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+                 <tabs>
+                   <Tab text="Select Excel">
+                     <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                 <Button fx:id="excelFileBrowse" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" text="Browse..." />
+                                 <Text layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Excel file:" />
+                                 <TextField fx:id="excelFileDir" layoutX="14.0" layoutY="55.0" prefHeight="40.0" prefWidth="405.0" promptText="Your Excel file location here..." />
+                                 <TableView fx:id="excelTablePreview" layoutX="14.0" layoutY="160.0" prefHeight="404.0" prefWidth="670.0" />
+                                 <Button fx:id="excelFilePreview" layoutX="124.0" layoutY="103.0" mnemonicParsing="false" text="Preview" />
+                              </children>
+                           </AnchorPane>
+                     </content>
+                   </Tab>
+                   <Tab text="Select PDF">
+                     <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                 <Button fx:id="pdfFileBrowse" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" text="Browse..." />
+                                 <Text layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select PDF file:" />
+                                 <TextField fx:id="pdfFileDir" layoutX="14.0" layoutY="55.0" prefHeight="40.0" prefWidth="405.0" promptText="Your PDF file location here..." />
+                                 <WebView fx:id="pdfWebView" layoutX="14.0" layoutY="160.0" prefHeight="404.0" prefWidth="670.0" />
+                                 <Button fx:id="pdfFilePreview" layoutX="124.0" layoutY="103.0" mnemonicParsing="false" text="Preview" />
+                              </children>
+                           </AnchorPane>
+                     </content>
+                   </Tab>
+                     <Tab text="Select FieldMapping">
+                        <content>
+                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                 <Button fx:id="mappingFieldFileBrowse" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" text="Browse..." />
+                                 <Text layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select MappingField config file:" />
+                                 <TextField fx:id="mappingFieldDir" layoutX="14.0" layoutY="55.0" prefHeight="40.0" prefWidth="405.0" promptText="Your MappingField config file location here..." />
+                                 <Button fx:id="mappingFieldCreate" layoutX="14.0" layoutY="236.0" mnemonicParsing="false" text="Create" />
+                                 <Text layoutX="14.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create new MappingField config:" />
+                                  <Button fx:id="mappingFieldFileEdit" layoutX="124.0" layoutY="103.0" mnemonicParsing="false" text="Edit" />
+                              </children>
+                           </AnchorPane>
+                        </content>
+                     </Tab>
+                 </tabs>
+               </TabPane>
+            </children>
+         </AnchorPane>
+      </Scene>
+   </scene>
+</Stage>

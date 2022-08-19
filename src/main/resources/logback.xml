@@ -1,0 +1,9 @@
+<configuration debug="true">
+    <appender name="CustomLoggerAppender" class="com.TWReceipt.logUtil.CustomLoggerAppender">
+        <prefix>Functional</prefix>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="CustomLoggerAppender"/>
+    </root>
+</configuration>

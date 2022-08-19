@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.text.Text?>
+<?import javafx.stage.Stage?>
+<Stage height="700.0" resizable="false" title="Application Console Log" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <scene>
+      <Scene>
+          <AnchorPane prefHeight="700.0" prefWidth="700.0">
+            <children>
+               <SplitPane dividerPositions="10.0" maxHeight="700.0" maxWidth="700.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="700.0">
+                 <items>
+                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="700.0">
+                        <children>
+                           <ScrollPane hbarPolicy="NEVER" prefHeight="641.0" prefWidth="702.0">
+                             <content>
+                               <AnchorPane minHeight="0.0" minWidth="0.0">
+                                    <children>
+                                       <ListView fx:id="applicationConsoleLog" layoutX="11.0" layoutY="20.0" prefHeight="550.0" prefWidth="679.0" />
+                                    </children>
+                                 </AnchorPane>
+                             </content>
+                           </ScrollPane>
+                        </children>
+                     </AnchorPane>
+                   <AnchorPane maxHeight="50.0" maxWidth="700.0" minHeight="100.0" minWidth="700.0" prefWidth="700.0">
+                        <children>
+                           <Button fx:id="applicationConsoleSave" layoutX="549.0" layoutY="5.0" mnemonicParsing="false" text="Save" />
+                           <Button fx:id="consoleApplicationClear" layoutX="622.0" layoutY="5.0" mnemonicParsing="false" text="Clear" />
+                           <TextField fx:id="applicationConsoleDir" layoutX="107.0" layoutY="6.0" prefHeight="40.0" prefWidth="328.0" promptText="Log file will be saved to this location..." />
+                           <Text layoutX="15.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Directory: " />
+                           <Button fx:id="applicationConsoleBrowse" layoutX="445.0" layoutY="5.0" mnemonicParsing="false" text="Browse.." />
+                        </children>
+                     </AnchorPane>
+                 </items>
+               </SplitPane>
+            </children>
+         </AnchorPane>
+      </Scene>
+   </scene>
+</Stage>

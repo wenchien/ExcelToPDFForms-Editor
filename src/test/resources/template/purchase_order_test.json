@@ -1,0 +1,29 @@
+[
+  {
+    "Item Name": "Pillow",
+    "Amount": "1",
+    "Customer Name": "John",
+    "Unit Price": "1270",
+    "Date": "2022-06-25",
+    "Purchase Order ID": "4500123456",
+    "Remark": ""
+  },
+  {
+    "Item Name": "Set 1",
+    "Amount": "1",
+    "Customer Name": "Steve",
+    "Unit Price": "2333",
+    "Date": "2022-06-26",
+    "Purchase Order ID": "4500987123",
+    "Remark": "Price corrected"
+  },
+  {
+    "Item Name": "Set 2",
+    "Amount": "1",
+    "Customer Name": "TRest123",
+    "Unit Price": "4567",
+    "Date": "2022-06-27",
+    "Purchase Order ID": "4500867543",
+    "Remark": ""
+  }
+]
