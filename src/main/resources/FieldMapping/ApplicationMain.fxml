@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 <?import javafx.stage.Stage?>
+
 <Stage height="700.0" resizable="false" title="ExcelMapToPDF Editor" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <scene>
       <Scene>
@@ -33,7 +42,7 @@
                </MenuBar>
                <TabPane layoutY="40.0" prefHeight="700.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                  <tabs>
-                   <Tab text="Select Excel">
+                   <Tab text="1. Select Excel">
                      <content>
                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
@@ -46,7 +55,7 @@
                            </AnchorPane>
                      </content>
                    </Tab>
-                   <Tab text="Select PDF">
+                   <Tab text="2. Select PDF">
                      <content>
                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
@@ -59,7 +68,7 @@
                            </AnchorPane>
                      </content>
                    </Tab>
-                     <Tab text="Select FieldMapping">
+                     <Tab text="3. Select FieldMapping">
                         <content>
                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
@@ -68,7 +77,33 @@
                                  <TextField fx:id="mappingFieldDir" layoutX="14.0" layoutY="55.0" prefHeight="40.0" prefWidth="405.0" promptText="Your MappingField config file location here..." />
                                  <Button fx:id="mappingFieldCreate" layoutX="14.0" layoutY="236.0" mnemonicParsing="false" text="Create" />
                                  <Text layoutX="14.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create new MappingField config:" />
+                                 <Text fill="RED" layoutX="14.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Requires files from tab #1 and #2. Complete tab #1 and #2 before proceeding">
+                                    <font>
+                                       <Font size="13.0" />
+                                    </font>
+                                 </Text>
                                   <Button fx:id="mappingFieldFileEdit" layoutX="124.0" layoutY="103.0" mnemonicParsing="false" text="Edit" />
+                              </children>
+                           </AnchorPane>
+                        </content>
+                     </Tab>
+                     <Tab closable="false" text="4. Run Batch">
+                        <content>
+                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                 <Text fill="RED" layoutX="14.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Requires file from tab #1 and tab #3. Complete those two tabs before proceeding">
+                                    <font>
+                                       <Font size="13.0" />
+                                    </font>
+                                 </Text>
+                                 <Button fx:id="runBatchExcelBrowse" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" text="Browse..." />
+                                 <Text layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Excel Batch Directory" />
+                                 <TextField fx:id="excelBatchDir" layoutX="14.0" layoutY="55.0" prefHeight="40.0" prefWidth="405.0" promptText="Excel batch location here..." />
+                                 <Button fx:id="runBatchButton" layoutX="14.0" layoutY="436.0" mnemonicParsing="false" text="Run" />
+                                 <Text layoutX="14.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Run Batch:" />
+                                 <Text layoutX="14.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select PDF Output Directory" />
+                                 <TextField fx:id="pdfOutputDir" layoutX="14.0" layoutY="201.0" prefHeight="40.0" prefWidth="405.0" promptText="pdf output directory here...." />
+                                 <Button fx:id="pdfOutputDirBrowse" layoutX="14.0" layoutY="250.0" mnemonicParsing="false" text="Browse..." />
                               </children>
                            </AnchorPane>
                         </content>

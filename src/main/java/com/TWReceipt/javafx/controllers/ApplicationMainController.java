@@ -33,9 +33,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("unused")
 public class ApplicationMainController {
 
     private static Logger LOGGER = LoggerFactory.getLogger(ApplicationMainController.class);
+
+    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     private static String mappingFieldFxml = "/FieldMapping/FieldMapping.fxml";
 
@@ -98,6 +101,21 @@ public class ApplicationMainController {
 
     @FXML
     private WebView pdfWebView;
+
+    @FXML
+    private Button runBatchExcelBrowse;
+
+    @FXML
+    private Button runBatchButton;
+
+    @FXML
+    private TextField excelBatchDir;
+
+    @FXML
+    private TextField pdfOutputDir;
+
+    @FXML
+    private Button pdfOutputDirBrowse;
 
     @FXML
     private void initialize() throws URISyntaxException {
@@ -165,7 +183,7 @@ public class ApplicationMainController {
 
     @SuppressWarnings("deprecation")
     private void initFuncEditExistingMappingFieldFile() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
         LOGGER.info("Initializing Application MappingField File editor btn");
         mappingFieldFileEdit.setOnAction(e -> {
             if (!Strings.isNullOrEmpty(mappingFieldDir.getText()) && new File(mappingFieldDir.getText()).exists()) {
@@ -269,6 +287,53 @@ public class ApplicationMainController {
         });
     }
 
+    private void initFuncPdfOutputDirBrowse(){
+        pdfOutputDirBrowse.setOnAction(e ->
+                fbSupplier.directoryBrowsingConsumer(pdfOutputDirBrowse, pdfOutputDir));
+    }
+
+    private void initFuncRunBatchPDFDirBrowse() {
+        LOGGER.info("Initializing Application Run Batch browse button");
+        runBatchExcelBrowse.setOnAction(e ->
+                fbSupplier.directoryBrowsingConsumer(runBatchExcelBrowse, excelBatchDir));
+    }
+
+    @SuppressWarnings("deprecation")
+    private void initFuncRunbatchButton() {
+        LOGGER.info("Initializing Application Run Batch run button");
+        runBatchButton.setOnAction(e -> {
+            if (!Strings.isNullOrEmpty(excelBatchDir.getText()) && new File(excelBatchDir.getText()).exists()
+                    && !Strings.isNullOrEmpty(pdfFileDir.getText()) && new File(pdfFileDir.getText()).exists()
+                && !Strings.isNullOrEmpty(mappingFieldDir.getText()) && new File(mappingFieldDir.getText()).exists()
+                    && !Strings.isNullOrEmpty(pdfOutputDir.getText()) && new File(pdfOutputDir.getText()).exists()) {
+                // if both Excel and Pdf directory exists
+
+                try {
+                    File excelFileDirectory = new File(excelFileDir.getText());
+                    File pdfBatchDirectory = new File(pdfOutputDir.getText());
+                    File pdfFile = new File(pdfFileDir.getText());
+
+                    List<String> pdfFieldNames = pdfUtil.readPdfFormFields(pdfFile, null).keySet()
+                            .stream().filter(f -> !f.contains(".1") && !f.contains(".2")).collect(Collectors.toList());
+
+                    // Mapping rule
+                    File mappingFieldFile = new File(mappingFieldDir.getText());
+                    Map<String, String> jsonConfigMap = new HashMap<>();
+                    Type mapType = typeUtil.getMapType(jsonConfigMap);
+                    jsonConfigMap = gson.fromJson(Files.toString(mappingFieldFile, StandardCharsets.UTF_8), mapType);
+                    for(File excelFile : excelFileDirectory.listFiles((f, fs) -> fs.endsWith(".xlsx"))) {
+                        // grouping functionality later
+                        // each line goes to one pdf
+                        mapExcelFieldToPdfBatch(pdfFile, excelFile, pdfFieldNames, jsonConfigMap);
+                    }
+                } catch (Exception ex) {
+                    LOGGER.error(ex.getMessage(), ex);
+                }
+
+            }
+        });
+    }
+
     // Util function
     private ObservableList<Map<String, String>> generateObservableListMap(List<Map<String, String>> excelData) {
         if (observableExcelData != null) {
@@ -280,6 +345,15 @@ public class ApplicationMainController {
             observableExcelData.add(rowMap);
         }
         return observableExcelData;
+    }
+
+    private void mapExcelFieldToPdfBatch(File templatePdfFile, File excelFile,
+                                         List<String> pdfFieldNames,  Map<String, String> jsonConfigMap) throws IOException {
+
+        for (Map<String, String> data : excelUtil.readExcel(excelFile, 0, 1)) {
+            pdfUtil.writeToPdf(excelFile, templatePdfFile, pdfFieldNames, jsonConfigMap, data);
+        }
+
     }
 
     private void initializeMappingFieldWindow(List<String> excelFields, List<String> pdfFields) throws IOException {
