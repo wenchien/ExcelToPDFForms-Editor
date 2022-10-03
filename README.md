@@ -1,1 +1,1 @@
-# ExcelToPDFForms-Editor
+# ExcelToPDFForms Mapping Editor
