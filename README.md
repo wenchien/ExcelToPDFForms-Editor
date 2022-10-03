@@ -31,12 +31,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p align="center">
-  <img src="https://github.com/wenchien/blender-material-to-vtf/blob/master/images/installation_2.PNG">
+  <img src="https://github.com/wenchien/ExcelToPDFForms-Editor/blob/master/images/logo.png">
 </p>
 
-Blender Source Tools allows Blender to import and export Studiomdl Data and DMX model files. However, in order to streamline the process of material exporting, .QC compilation and HLMV previewing, it's not exactly convenient especially the material exporting part.
-
-I don't want to click through VTFEdit or any other VTF editing software anymore. I want an add-on with simple GUI that quickly export materials in batch. This is my first blender add-on that tackles this problem. You can say this is pretty much a Blender GUI for VTFLib
+Instead of writing static mapping POJOs / beans / configurations and re-compile again and again for users' constant needs, why don't we let the users handle it? This is a GUI tool that aims to let users easily create input-output mappings between Excel field and PDF field. Given an Excel with a header and a pdf with defined fields(textfields or textbox...etc.), this tool will generate configuration file as JSON, read that configuration file and automatically run the data conversion if scheduled.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -45,9 +43,10 @@ I don't want to click through VTFEdit or any other VTF editing software anymore.
 
 ### Built With
 
-* ![Python Versions][pyversion-button]
-* ![Blender Versions][blender-version]
-
+* ![Java Versions][java-version]
+* ![JavaFx][javafx-version]
+* ![iText][itext-version]
+* See the ![pom.xml](https://github.com/wenchien/ExcelToPDFForms-Editor/blob/master/pom.xml) for all relevant dependencies
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
